@@ -8,6 +8,6 @@
         public double BaseRate { get; set; }
         public bool IsOversized { get; set; }
         public bool IsRefrigerated { get; set; }
-        public bool IsHzardousMaterial { get; set; }
+        public bool IsHazardousMaterial { get; set; }
     }
 }
