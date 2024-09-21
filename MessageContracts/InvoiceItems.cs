@@ -14,8 +14,8 @@ namespace MessageContracts
 
         public override string? ToString()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine($"With items: Price:{Price}, Desc:{Description}");
+            var builder = new StringBuilder();
+            builder.AppendLine($"Price:{Price}, Desc:{Description}");
             builder.AppendLine($"Actual distance in miles:{ActualMileage}, Base Rate:{BaseRate}");
             builder.AppendLine($"Oversized:{IsOversized}, Refrigerated:{IsRefrigerated}, Haz Mat:{IsHazardousMaterial}");
             return builder.ToString();
