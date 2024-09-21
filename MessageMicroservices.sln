@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageContracts", "Message
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceMicroservice", "InvoiceMicroservice\InvoiceMicroservice.csproj", "{BCEF7828-EB66-431F-9A99-18A6A315C3F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentMicroservice", "PaymentMicroservice\PaymentMicroservice.csproj", "{974FC32D-D18D-446E-9468-83AE43A926FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BCEF7828-EB66-431F-9A99-18A6A315C3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCEF7828-EB66-431F-9A99-18A6A315C3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCEF7828-EB66-431F-9A99-18A6A315C3F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{974FC32D-D18D-446E-9468-83AE43A926FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974FC32D-D18D-446E-9468-83AE43A926FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974FC32D-D18D-446E-9468-83AE43A926FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974FC32D-D18D-446E-9468-83AE43A926FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
