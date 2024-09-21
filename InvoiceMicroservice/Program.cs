@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MessageContracts;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,22 +8,17 @@ namespace InvoiceMicroservice
 {
     internal class Program
     {
-        static async void Main(string[] args)
+        static void Main(string[] args)
         {
-            var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
-            {
-                cfg.Host("localhost");
-                cfg.ReceiveEndpoint("invoice-service", endpoint =>
-                {
-                    endpoint.UseInMemoryOutbox();
-                    endpoint.Consumer<EventConsumer>(c =>
-                        c.UseMessageRetry(m => m.Interval(5, new TimeSpan(0, 0, 10)))
-                    );
-                });
-            });
-            var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
-            await busControl.StartAsync(source.Token);
+            startService();
+        }
 
+        private static async void startService()
+        {
+            var busControl = BusControlCreator.CreateUsingRabbitMq<EventConsumer>("invoice-service");
+            var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+
+            await busControl.StartAsync(source.Token);
             Console.WriteLine("Invoice Microservice Now Listening");
 
             try
