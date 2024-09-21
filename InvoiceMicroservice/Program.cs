@@ -10,10 +10,10 @@ namespace InvoiceMicroservice
     {
         static void Main(string[] args)
         {
-            startService();
+            StartService();
         }
 
-        private static async void startService()
+        private static async void StartService()
         {
             var busControl = BusControlCreator.CreateUsingRabbitMq<EventConsumer>("invoice-service");
             var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
