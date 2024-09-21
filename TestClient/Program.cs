@@ -9,12 +9,12 @@ namespace TestClient
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            StartService();
+            await StartService();
         }
 
-        private static async void StartService()
+        private static async Task StartService()
         {
             Console.WriteLine("Waiting while consumers initialize.");
             await Task.Delay(3000); //because the consumers need to start first

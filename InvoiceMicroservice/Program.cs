@@ -8,12 +8,12 @@ namespace InvoiceMicroservice
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            StartService();
+            await StartService();
         }
 
-        private static async void StartService()
+        private static async Task StartService()
         {
             var busControl = BusControlCreator.CreateUsingRabbitMq<EventConsumer>("invoice-service");
             var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
