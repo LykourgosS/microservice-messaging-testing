@@ -1,3 +1,9 @@
+using DiscountSvc_Provider.Models;
+using DiscountSvc_Provider.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace DiscountSvc_Provider
 {
     public class Program
