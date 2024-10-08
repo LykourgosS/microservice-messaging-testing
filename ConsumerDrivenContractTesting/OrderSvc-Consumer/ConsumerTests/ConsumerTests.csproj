@@ -21,8 +21,4 @@
     <ProjectReference Include="..\OrderSvc-Consumer\OrderSvc-Consumer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Using Include="Xunit" />
-  </ItemGroup>
-
 </Project>
