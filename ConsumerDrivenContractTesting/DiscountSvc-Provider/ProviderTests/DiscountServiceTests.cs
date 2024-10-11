@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
-using PactNet;
+﻿using PactNet;
+using System;
+using System.Collections.Generic;
+using Xunit;
 using Xunit.Abstractions;
 using IOutput = PactNet.Infrastructure.Outputters.IOutput;
 
