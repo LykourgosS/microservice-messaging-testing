@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PaymentMicroservice
 {
-    internal class InvoiceCreatedConsumer : IConsumer<IInvoiceCreated>
+    public class InvoiceCreatedConsumer : IConsumer<IInvoiceCreated>
     {
         public async Task Consume(ConsumeContext<IInvoiceCreated> context)
         {
