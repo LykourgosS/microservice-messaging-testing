@@ -1,0 +1,40 @@
+{
+  "consumer": {
+    "name": "Orders"
+  },
+  "provider": {
+    "name": "Discounts"
+  },
+  "interactions": [
+    {
+      "description": "Given a customer rating, an adjustment discount amount will be returned.",
+      "providerState": "Rate",
+      "request": {
+        "method": "post",
+        "path": "/discount",
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "customerRating": 4.1,
+          "amountToDiscount": 0.0
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "customerRating": 4.1,
+          "amountToDiscount": 0.41
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
