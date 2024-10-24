@@ -12,17 +12,13 @@ This repository focuses on **Microservice Messaging** using **MassTransit** and 
 2. [Technologies Used](#technologies-used)
 3. [Project Structure](#project-structure)
    - [Microservice Messaging](#microservice-messaging-chapter-5)
-   - [Testing Microservices](#testing-microservices-chapter-7)
-     - [Over HTTP Protocol (Overview)](#over-http-protocol-overview)
-     - [Through Message Queues (Overview)](#through-message-queues-overview)
+   - [Testing Microservices](#testing-microservices)
 4. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
-5. [Running Microservice Messaging](#running-microservice-messaging)
-
-6. [Testing Over HTTP Protocol](#testing-over-http-protocol)
-7. [Testing Through Message Queues](#testing-through-message-queues)
-8. [License](#license)
+5. [Running the Project](#running-the-project)
+6. [Testing](#testing)
+7. [License](#license)
 
 ## Introduction
 
@@ -43,7 +39,7 @@ These implementations follow **Chapter 5** and **Chapter 7** of [_Pro Microservi
 
 ## Project Structure
 
-### Microservice Messaging (Chapter 5)
+### Microservice Messaging
 
 Focuses on implementing **message-based communication** using **MassTransit** and **RabbitMQ**. The implementation of microservice messaging includes the following projects (contained within [MessageMicroservices](/MessageMicroservices//MessageMicroservices.sln) solution):
 
@@ -53,11 +49,11 @@ Focuses on implementing **message-based communication** using **MassTransit** an
 
 MassTransit handles the communication, and RabbitMQ is used as the message broker.
 
-### Testing Microservices (Chapter 7)
+### Testing Microservices
 
 Focuses on **contract testing** between microservices using **Pact Net** framework. The consumer-driven contract testing approach ensures that both services can work together by adhering to predefined communication rules. Communication between microservices is achieved either over HTTP protocol, using REST APIs, or through message queues.
 
-- ### Over HTTP Protocol (Overview)
+- ### Over HTTP Protocol
 
   [Contract-Testing](/Contract-Testing/Contract-Testing.sln) solution contains two microservice projects ([OrderSvc-Consumer](/Contract-Testing/OrderSvc-Consumer/OrderSvc-Consumer.csproj) and [DiscountSvc-Provider](/Contract-Testing/DiscountSvc-Provider/DiscountSvc-Provider.csproj)) and their appropriate test projects.
 
@@ -66,7 +62,7 @@ Focuses on **contract testing** between microservices using **Pact Net** framewo
     - [DiscountSvcTests](/Contract-Testing/ConsumerTests/DiscountSvcTests.cs): a test that is reliant on the mock service. Because of the mock service, there is no need to run the service itself. Running the test will leverage **Pact Net** and the mock microservice, and will generate the contract file (see [example](/example/orders-discounts.json)).
   - [ProviderTests](/Contract-Testing/ProviderTests/ProviderTests.csproj) uses the information from the generated contract file (see [example](/example/orders-discounts.json)) to call the Discount microservice and confirm that the contract has not broken.
 
-- ### Through Message Queues (Overview)
+- ### Through Message Queues
 
   [MessageMicroservices](/MessageMicroservices/MessageMicroservices.sln) solution contains two microservice projects (for details see [here](#microservice-messaging)) and their appropriate test projects:
 
@@ -91,7 +87,7 @@ git clone https://github.com/LykourgosS/microservice-messaging-testing.git
 cd microservice-messaging-testing
 ```
 
-## Running Microservice Messaging
+## Running the Project
 
 1. Navigate to the appropriate folder:
 
@@ -119,24 +115,71 @@ cd microservice-messaging-testing
    dotnet run --project .\TestClient\TestClient.csproj
    ```
 
-## Testing Microservices
+> [!NOTE]
+> See example video for messaging [here](/docs/messaging-demo.mp4).
+
+## Testing
+
+Following commands will execute the **Pact Net** contract tests to ensure both services comply with the communication contract.
 
 - ### Over HTTP Protocol
 
-1. Navigate to the testing folder:
+  1.  Navigate to the `Contract-Testing` folder:
 
-   ```bash
-   cd Contract-Testing
-   ```
+      ```bash
+      cd Contract-Testing
+      ```
 
-2.
+  2.  Run test for consumer service (to generate the contract file):
 
-This will execute the **Pact Net** contract tests to ensure both services comply with the communication contract.
+      ```bash
+      cd ConsumerTests
+      dotnet test
+      ```
 
-<video width="640" height="480" controls>
-  <source src="./docs/testing-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+  3.  Run provider service (i.e. DiscountSvc-Provider) in a separate terminal:
+
+      ```bash
+      cd DiscountSvc-Provider
+      dotnet run
+      ```
+
+  4.  And now that the provider service is up and running, run test for it (to check if contact has broken based on the generated contract file):
+
+      ```bash
+      cd ..
+      cd ProviderTests
+      dotnet test
+      ```
+
+- ### Through Message Queues
+
+  1.  Navigate to the `MessageMicroservices` folder:
+
+      ```bash
+      cd MessageMicroservices
+      ```
+
+  2.  Run test for consumer service (i.e. PaymentMicroservice):
+
+      ```bash
+      cd ConsumerTests
+      dotnet test
+      ```
+
+  3.  Run test for producer service (i.e. InvoiceMicroservice):
+
+      ```bash
+      cd ..
+      cd ProducerTests
+      dotnet test
+      ```
+
+> [!NOTE]
+> See example video for testing [here](/docs/testing-demo.mp4).
+
+> [!WARNING]
+> Due to a [known issue with ruby](https://github.com/ruby/ruby/pull/4505) the cloned repository should be located close to the root `C:\` (suggested solutions can be found [here](https://stackoverflow.com/a/66228021/20059477) and [here](https://stackoverflow.com/questions/66791308/running-pact-test-is-throwing-a-ruby-load-error)).
 
 ## License
 
