@@ -116,7 +116,7 @@ cd microservice-messaging-testing
    ```
 
 > [!NOTE]
-> See example video for messaging [here](/docs/messaging-demo.mp4).
+> See example video for messaging [here](/docs/videos/messaging-demo.mp4).
 
 ## Testing
 
@@ -176,7 +176,7 @@ Following commands will execute the **Pact Net** contract tests to ensure both s
       ```
 
 > [!NOTE]
-> See example video for testing [here](/docs/testing-demo.mp4).
+> See example video for testing [here](/docs/videos/testing-demo.mp4).
 
 > [!WARNING]
 > Due to a [known issue with ruby](https://github.com/ruby/ruby/pull/4505) the cloned repository should be located close to the root `C:\` (suggested solutions can be found [here](https://stackoverflow.com/a/66228021/20059477) and [here](https://stackoverflow.com/questions/66791308/running-pact-test-is-throwing-a-ruby-load-error)).
